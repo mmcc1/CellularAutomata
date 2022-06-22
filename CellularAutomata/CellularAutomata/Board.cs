@@ -4,7 +4,7 @@
     {
         private int size;
 
-        public Board(int size)
+        public Board(int size, int density)
         {
             BoardState = new bool[size * size];
             this.size = size;
@@ -12,7 +12,8 @@
             Random rng = new Random((int)DateTime.Now.Ticks);
 
             for (int i = 0; i < BoardState.Length; i++)
-                BoardState[i] = rng.Next(0, 2) == 0 ? false : true;
+                if (rng.Next(0, density) == 1 ? true : false)  //Adjust for density
+                    BoardState[i] = rng.Next(0, 2) == 0 ? false : true;
         }
 
         public bool[] BoardState { get; set; }
@@ -23,7 +24,7 @@
         {
             lock (loc)
             {
-                Bitmap boardImage = new Bitmap(size, size); 
+                Bitmap boardImage = new Bitmap(size, size);
 
                 int index = 0;
 
