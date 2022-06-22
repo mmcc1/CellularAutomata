@@ -9,6 +9,7 @@
         #region Conway's Game of Life Rules - McCarron Edit
 
         Random rng = new Random((int)DateTime.Now.Ticks);
+        const int rate = 100;
 
         public List<Neighbour> UpdateGeneration(List<Neighbour> neighbours)
         {
@@ -18,7 +19,7 @@
                 //With low probability of survival
                 if (neighbours[i].isAlive && neighbours[i].Neighbours.Count < 2)
                 {
-                    if (rng.Next(0, 15) == 1 ? true : false)
+                    if (rng.Next(0, rate) == 1 ? true : false)
                         neighbours[i].isAlive = true;
                     else
                         neighbours[i].isAlive = false;
@@ -37,7 +38,7 @@
                 //With low probability of survival
                 if (neighbours[i].isAlive && neighbours[i].Neighbours.Count > 3)
                 {
-                    if (rng.Next(0, 15) == 1 ? true : false)
+                    if (rng.Next(0, rate) == 1 ? true : false)
                         neighbours[i].isAlive = true;
                     else
                         neighbours[i].isAlive = false;
