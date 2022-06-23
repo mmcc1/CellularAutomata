@@ -4,12 +4,12 @@
     {
         private int size;
 
-        public Board(int size, int density)
+        public Board(int size, int density, int rngSeed)
         {
             BoardState = new bool[size * size];
             this.size = size;
 
-            Random rng = new Random((int)DateTime.Now.Ticks);
+            Random rng = new Random(rngSeed);
 
             for (int i = 0; i < BoardState.Length; i++)
                 if (rng.Next(0, density) == 1 ? true : false)  //Adjust for density

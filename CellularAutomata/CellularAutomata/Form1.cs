@@ -29,12 +29,15 @@ namespace CellularAutomata
                 button1.Text = "Start";
                 comboBox1.Enabled = true;
                 comboBox2.Enabled = true;
+                numericUpDown1.Enabled = true;
+                numericUpDown2.Enabled = true;
+                numericUpDown3.Enabled = true;
             }
             else
             {
                 button1.Text = "Stop";
                 int density = int.Parse(comboBox2.GetItemText(comboBox2.SelectedItem));
-                board = new Board(256, density);
+                board = new Board(256, density, (int)numericUpDown1.Value);
                 string selected = comboBox1.GetItemText(comboBox1.SelectedItem);
 
                 if (selected.Contains("Conway"))
@@ -45,7 +48,7 @@ namespace CellularAutomata
                 else
                 {
                     conway = null;
-                    mccarron = new McCarron();
+                    mccarron = new McCarron((int)numericUpDown2.Value, (int)numericUpDown3.Value);
                 }
 
                 timer = new System.Timers.Timer();
@@ -56,6 +59,9 @@ namespace CellularAutomata
                 isRunning = true;
                 comboBox1.Enabled = false;
                 comboBox2.Enabled = false;
+                numericUpDown1.Enabled = false;
+                numericUpDown2.Enabled = false;
+                numericUpDown3.Enabled = false;
             }
         }
 

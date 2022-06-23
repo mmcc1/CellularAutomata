@@ -8,8 +8,14 @@
     {
         #region Conway's Game of Life Rules - McCarron Edit
 
-        Random rng = new Random((int)DateTime.Now.Ticks);
-        const int rate = 100;
+        Random rng;
+        int rate;
+
+        public McCarron(int rngSeed, int rate)
+        {
+            rng = new Random(rngSeed);
+            this.rate = rate;
+        }
 
         public List<Neighbour> UpdateGeneration(List<Neighbour> neighbours)
         {
