@@ -1,4 +1,4 @@
-# CellularAutomata v1.0.3
+# CellularAutomata v1.0.4
 Conway's Game of life
  
 A bare bones NET 6 implementation of Conway's Game of Life.
